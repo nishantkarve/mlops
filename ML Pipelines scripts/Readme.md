@@ -6,9 +6,9 @@
 <li><a href= "#MLOps-Template-for-building-training-and-deploying-models">MLOps Template for building, training and deploying models</a></li>
 <li><a href="#Modifying-the-Seed-Code-for-Custom-Use-Case">Modifying the Seed Code for Custom Use Case</a></li>
 <li><a href="#Model-Build-Repo">Model Build Repo</a></li>
-<li>ModelDeploy repo</li>
-<li>Triggering a pipeline run</li>
-<li>Conclusion</li>
+<li><a href="#Model-Deploy-repo">Model Deploy repo</a></li>
+<li><a href="#Triggering-a-pipeline-run">Triggering a pipeline run</a></li>
+<li><a href="#Conclusion">Conclusion</a></li>
 </ul>
 
 
