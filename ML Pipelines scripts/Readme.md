@@ -120,3 +120,17 @@ If you are prompted for a kernel, choose Data Science and Python 3.
 ![My Image](images/image14.png)
 
 2. Inside Studio Notebook, once the kernel is started, run the following code in a cell block to download a data text file and save it as a .csv in your bucket:
+
+```
+!aws s3 cp s3://sagemaker-sample-files/datasets/tabular/synthetic/churn.txt ./
+import boto3
+import os
+import sagemaker
+prefix = 'sagemaker/DEMO-xgboost-churn'
+region = boto3.Session().region_name
+default_bucket = sagemaker.session.Session().default_bucket()
+RawData = boto3.Session().resource('s3')\
+.Bucket(default_bucket).Object(os.path.join(prefix, 'data/RawData.csv'))\
+.upload_file('./churn.txt')
+print(os.path.join("s3://",default_bucket, prefix, 'data/RawData.csv'))
+```
