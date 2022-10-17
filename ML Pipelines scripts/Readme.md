@@ -22,3 +22,5 @@ In SageMaker Studio, you can now choose the Projects menu on the Components and 
 Once you choose Projects, click on <b>Create project</b> as below:
 
 ![My Image](images/image2.png)
+
+On the projects page, you can launch a preconfigured SageMaker MLOps template. For this lab, we choose <b>MLOps template for model building, training, and deployment</b> and click on <b>Select project template</b>
