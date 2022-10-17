@@ -156,4 +156,13 @@ Save the file.
 
 6. Replace the <b>preprocess.py</b> code under the <b>ustomer_churn</b> folder with the customer churn <a href="preprocess.py">preprocessing script found in the sample repository.</a>
 
+![My Image](images/image18.png)
 
+7. Replace the <b>pipeline.py</b> code under the customer_churn folder with the customer churn <a href="preprocess.py">pipeline script found in the sample repository </a> . Be sure to replace the “InputDataUrl” (line 121 of pipeline.py) default parameter with the Amazon S3 URL obtained in Step 2:
+
+```
+input_data = ParameterString(
+    name="InputDataUrl",
+    default_value=f"s3://YOUR-BUCKET/sagemaker/DEMO-xgboost-churn/data/RawData.csv",
+)
+```
