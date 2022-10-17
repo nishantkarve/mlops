@@ -134,3 +134,16 @@ RawData = boto3.Session().resource('s3')\
 .upload_file('./churn.txt')
 print(os.path.join("s3://",default_bucket, prefix, 'data/RawData.csv'))
 ```
+
+3. Navigate to the pipelines directory inside the modelbuild directory and rename the abalone directory to customer_churn (as shown below).
+
+![My Image](images/image15.png)
+
+4. Now open the codebuild-buildspec.yml file in the modelbuild directory and modify the run pipeline path from run-pipeline --module-name pipelines.abalone.pipeline to this:
+
+```
+run-pipeline --module-name pipelines.customer_churn.pipeline \
+```
+This is also shown in the image below - line 15. This code can be found here .
+
+![My Image](images/image16.png)
