@@ -10,7 +10,7 @@ SageMaker projects introduce MLOps templates that automatically provision the un
 
 This lab focuses on using an MLOps template to bootstrap your ML project and establish a CI/CD pattern from sample code. We show how to use the built-in build, train, and deploy project template as a base for a customer churn classification example. This base template enables CI/CD for training ML models, registering model artifacts to the model registry, and automating model deployment with manual approval and automated testing.
 
-<h3>MLOps Template for building, training and deploying modelsHeader anchor link</h3>
+<h3>MLOps Template for building, training and deploying models</h3>
 
 We start by taking a detailed look at what AWS services are launched when this build, train, and deploy MLOps template is launched. Later, we discuss how to modify the skeleton for a custom use case.
 
