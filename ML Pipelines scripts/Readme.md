@@ -43,9 +43,10 @@ After the project is created from the MLOps template, the following architecture
 
 Included in the architecture are the following AWS services and resources:
 
-The MLOps templates that are made available through SageMaker projects are provided via an AWS Service Catalog  portfolio that automatically gets imported when a user enables projects on the Studio domain.
+<ul>
+<li>The MLOps templates that are made available through SageMaker projects are provided via an AWS Service Catalog  portfolio that automatically gets imported when a user enables projects on the Studio domain.</li>
 
-Two repositories are added to AWS CodeCommit :
+  <li>Two repositories are added to AWS CodeCommit : </li>
 
 The first repository provides scaffolding code to create a multi-step model building pipeline including the following steps: data processing, model training, model evaluation, and conditional model registration based on accuracy. As you can see in the pipeline.py file, this pipeline trains a linear regression model using the XGBoost algorithm on the well-known UCI Abalone dataset . This repository also includes a build specification file , used by AWS CodePipeline  and AWS CodeBuild  to run the pipeline automatically.
 
