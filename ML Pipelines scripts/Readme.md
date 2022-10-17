@@ -24,3 +24,7 @@ Once you choose Projects, click on <b>Create project</b> as below:
 ![My Image](images/image2.png)
 
 On the projects page, you can launch a preconfigured SageMaker MLOps template. For this lab, we choose <b>MLOps template for model building, training, and deployment</b> and click on <b>Select project template</b>
+
+![My Image](images/image3.png)
+
+In the next page provide Project Name and short Description and select <b>Create Project.</b>
