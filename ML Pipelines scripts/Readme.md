@@ -16,3 +16,4 @@ We start by taking a detailed look at what AWS services are launched when this b
 
 In SageMaker Studio, you can now choose the Projects menu on the Components and registries menu.
 
+![My Image](images/image1.png)
