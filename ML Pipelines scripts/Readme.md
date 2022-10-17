@@ -4,8 +4,8 @@
 <ul>
 <li><a href = "#overview">Overview</a></li>
 <li><a href= "#MLOps-Template-for-building-training-and-deploying-models">MLOps Template for building, training and deploying models</a></li>
-<li><a href="Modifying-the-Seed-Code-for-Custom-Use-Case">Modifying the Seed Code for Custom Use Case</a></li>
-<li><a href="Model-Build-Repo">Model Build Repo</a></li>
+<li><a href="#Modifying-the-Seed-Code-for-Custom-Use-Case">Modifying the Seed Code for Custom Use Case</a></li>
+<li><a href="#Model-Build-Repo">Model Build Repo</a></li>
 <li>ModelDeploy repo</li>
 <li>Triggering a pipeline run</li>
 <li>Conclusion</li>
