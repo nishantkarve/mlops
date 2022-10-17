@@ -3,7 +3,7 @@
 
 <ul>
 <li><a href = "#overview">Overview</a></li>
-<li>MLOps Template for building, training and deploying models</li>
+<li><a href= "#MLOps Template for building, training and deploying models">MLOps Template for building, training and deploying models</a></li>
 <li>Modifying the Seed Code for Custom Use Case</li>
 <li>ModelBuild Repo</li>
 <li>ModelDeploy repo</li>
