@@ -154,6 +154,6 @@ Save the file.
 
 ![My Image](images/image17.png)
 
-6. Replace the <b>preprocess.py</b> code under the <b>ustomer_churn</b> folder with the customer churn <a href="precprocess.py">preprocessing script found in the sample repository.</a>
+6. Replace the <b>preprocess.py</b> code under the <b>ustomer_churn</b> folder with the customer churn <a href="preprocess.py">preprocessing script found in the sample repository.</a>
 
 
