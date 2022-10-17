@@ -232,6 +232,7 @@ Committing these changes to the CodeCommit repository (easily done on the Studio
 
 Make sure you stage the Untracked changes as well.
 
+  
 ![My Image](images/image21.png)
 
 2. Navigate back to the project and select the Pipelines section.
