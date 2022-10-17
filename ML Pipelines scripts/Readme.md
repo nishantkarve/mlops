@@ -15,3 +15,4 @@ This lab focuses on using an MLOps template to bootstrap your ML project and est
 We start by taking a detailed look at what AWS services are launched when this build, train, and deploy MLOps template is launched. Later, we discuss how to modify the skeleton for a custom use case.
 
 In SageMaker Studio, you can now choose the Projects menu on the Components and registries menu.
+
