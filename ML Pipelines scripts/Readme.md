@@ -55,12 +55,14 @@ Included in the architecture are the following AWS services and resources:
  <li>The second repository contains code and configuration files for model deployment, as well as test scripts required to pass the quality gate. This repo also uses CodePipeline and CodeBuild, which run an AWS CloudFormation  template to create model endpoints for staging and production. </li>
 </ul>
 
-Two CodePipeline pipelines:
+<li>Two CodePipeline pipelines: <li>
 
-The ModelBuild pipeline automatically triggers and runs the pipeline from end to end whenever a new commit is made to the ModelBuild CodeCommit repository.
+  <ul>
+<li>The ModelBuild pipeline automatically triggers and runs the pipeline from end to end whenever a new commit is made to the ModelBuild CodeCommit repository.</li>
 
-The ModelDeploy pipeline automatically triggers whenever a new model version is added to the model registry and the status is marked as Approved. Models that are registered with Pending or Rejected statuses aren’t deployed.
+<li>The ModelDeploy pipeline automatically triggers whenever a new model version is added to the model registry and the status is marked as Approved. Models that are registered with Pending or Rejected statuses aren’t deployed.</li>
 
+  </ul>
 An Amazon Simple Storage Service  (Amazon S3) bucket is created for output model artifacts generated from the pipeline.
 
 SageMaker Pipelines uses the following resources: 
