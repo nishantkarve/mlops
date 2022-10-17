@@ -201,3 +201,34 @@ with open(evaluation_output_path, 'w') as f:
 ```
 The JSON structure of these metrics are required to match the format of sagemaker.model_metrics for complete integration with the model registry. 
 
+<h3>ModelDeploy repo:</h3>
+
+The ModelDeploy repository contains the AWS CloudFormation buildspec for the deployment pipeline. We don’t make any modifications to this code because it’s sufficient for our customer churn use case. It’s worth noting that model tests can be added to this repo to gate model deployment. See the following code:
+
+```
+├── build.py
+├── buildspec.yml
+├── endpoint-config-template.yml
+├── prod-config.json
+├── README.md
+├── staging-config.json
+└── test
+├── buildspec.yml
+└── test.py
+```
+
+<h3>Triggering a pipeline run</h3>
+
+Committing these changes to the CodeCommit repository (easily done on the Studio source control tab) triggers a new pipeline run, because an <a href="https://aws.amazon.com/eventbridge/">Amazon EventBridge</a>  event monitors for commits. After a few moments, we can monitor the run by choosing the pipeline inside the SageMaker project.
+
+<ul>
+<li>To commit the changes, navigate to the Git Section on the left panel and follow the steps in the screenshot below;<li>
+<ul>  
+  <li>Stage all changes</li>
+  <li>Commit the changes by providing a Summary and your Name and an email address</li>
+  <li>Push the changes.</li>
+  </ul>
+</ul>
+
+Make sure you stage the Untracked changes as well.
+
