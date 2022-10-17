@@ -1,9 +1,8 @@
 <h2> MLOps - Immersion Day </h2>
 
-<h3>Overview</h3>
 
 <ul>
-<li>Overview</li>
+<li>Overview #Overview</li>
 <li>MLOps Template for building, training and deploying models</li>
 <li>Modifying the Seed Code for Custom Use Case</li>
 <li>ModelBuild Repo</li>
@@ -11,6 +10,9 @@
 <li>Triggering a pipeline run</li>
 <li>Conclusion</li>
 </ul>
+
+
+<h3>Overview</h3>
 
 Amazon SageMaker Pipelines , a new capability of Amazon SageMaker  that makes it easy for data scientists and engineers to build, automate, and scale end to end machine learning pipelines. SageMaker Pipelines is a native workflow orchestration tool  for building ML pipelines that take advantage of direct Amazon SageMaker  integration. Three components improve the operational resilience and reproducibility of your ML workflows: pipelines, model registry, and projects. These workflow automation components enable you to easily scale your ability to build, train, test, and deploy hundreds of models in production, iterate faster, reduce errors due to manual orchestration, and build repeatable mechanisms.
 
