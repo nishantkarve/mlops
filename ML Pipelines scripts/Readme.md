@@ -147,3 +147,13 @@ run-pipeline --module-name pipelines.customer_churn.pipeline \
 This is also shown in the image below - line 15. This code can be found <a href="codebuild-buildspec.yml">here</a> .
 
 ![My Image](images/image16.png)
+
+Save the file.
+
+5. Now you need to replace all 3 files inside the Pipeline directory as shown below;
+
+![My Image](images/image17.png)
+
+6. Replace the <b>preprocess.py</b> code under the <b>ustomer_churn</b> folder with the customer churn <a href="precprocess.py">preprocessing script found in the sample repository.</a>
+
+
