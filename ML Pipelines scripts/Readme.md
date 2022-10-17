@@ -27,7 +27,7 @@ On the projects page, you can launch a preconfigured SageMaker MLOps template. F
 
 ![My Image](images/image3.png)
 
-In the next page provide Project Name and short Description and select <b>Create Project.</b>
+In the next page provide Project Name and short Description and select <b>Create Project.</b>. Please use the name as shown below
 
 ![My Image](images/image4.png)
 
