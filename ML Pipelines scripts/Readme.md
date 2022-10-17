@@ -166,3 +166,38 @@ input_data = ParameterString(
     default_value=f"s3://YOUR-BUCKET/sagemaker/DEMO-xgboost-churn/data/RawData.csv",
 )
 ```
+
+![My Image](images/image19.png)
+
+The conditional step to evaluate the classification model should already be as the following:
+
+```
+# Conditional step for evaluating model quality and branching execution</p>
+cond_lte = ConditionGreaterThanOrEqualTo(
+    left=JsonGet(step=step_eval, property_file=evaluation_report, json_path="binary_classification_metrics.accuracy.value"), right=0.8
+)
+```
+
+![My Image](images/image20.png)
+
+8. Replace the evaluate.py code with the customer churn evaluation script found in the sample repository . One piece of the code we’d like to point out is that, because we’re evaluating a classification model, we need to update the metrics we’re evaluating and associating with trained models:
+
+```
+report_dict = {
+    "binary_classification_metrics": {
+        "accuracy": {
+            "value": acc,
+            "standard_deviation" : "NaN"
+        },
+        "auc" : {
+            "value" : auc,
+            "standard_deviation": "NaN"
+        },
+    },
+}
+evaluation_output_path = '/opt/ml/processing/evaluation/evaluation.json'
+with open(evaluation_output_path, 'w') as f:
+    f.write(json.dumps(report_dict))
+```
+The JSON structure of these metrics are required to match the format of sagemaker.model_metrics for complete integration with the model registry. 
+
