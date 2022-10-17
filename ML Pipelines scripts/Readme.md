@@ -144,6 +144,6 @@ print(os.path.join("s3://",default_bucket, prefix, 'data/RawData.csv'))
 ```
 run-pipeline --module-name pipelines.customer_churn.pipeline \
 ```
-This is also shown in the image below - line 15. This code can be found here .
+This is also shown in the image below - line 15. This code can be found <a href="codebuild-buildspec.yml">here</a> .
 
 ![My Image](images/image16.png)
