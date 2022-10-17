@@ -4,8 +4,8 @@
 <ul>
 <li><a href = "#overview">Overview</a></li>
 <li><a href= "#MLOps-Template-for-building-training-and-deploying-models">MLOps Template for building, training and deploying models</a></li>
-<li>Modifying the Seed Code for Custom Use Case</li>
-<li>ModelBuild Repo</li>
+<li><a href="Modifying-the-Seed-Code-for-Custom-Use-Case">Modifying the Seed Code for Custom Use Case</a></li>
+<li><a href="Model-Build-Repo">Model Build Repo</a></li>
 <li>ModelDeploy repo</li>
 <li>Triggering a pipeline run</li>
 <li>Conclusion</li>
@@ -117,7 +117,7 @@ Once both repositories have been cloned you should see the following:
 
 ![My Image](images/image11.png)
 
-<h3>ModelBuild Repo:</h3>
+<h3>Model Build Repo:</h3>
 
 The ModelBuild repository contains the code for preprocessing, training, and evaluating the model. The sample code trains and evaluates a model on the UCI Abalone dataset . We can modify these files to solve our own customer churn use case. See the following code:
 
