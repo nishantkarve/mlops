@@ -71,15 +71,18 @@ Included in the architecture are the following AWS services and resources:
 <ul>
 <li>This workflow contains the directed acyclic graph (DAG) that trains and evaluates our model. Each step in the pipeline keeps track of the lineage and intermediate steps can be cached for quickly re-running the pipeline. Outside of templates, you can also create pipelines using the SDK . </li>
 
-<li>Within SageMaker Pipelines, the SageMaker model registry  tracks the model versions and respective artifacts, including the lineage and metadata for how they were created. Different model versions are grouped together under a model group, and new models registered to the registry are automatically versioned. The model registry also provides an approval workflow for model versions and supports deployment of models in different accounts. You can also use the model registry through the boto3 package .</li>
-
+<li>Within SageMaker Pipelines, the SageMaker model registry  tracks the model versions and respective artifacts, including the lineage and metadata for how they were created. Different model versions are grouped together under a model group, and new models registered to the registry are automatically versioned. The model registry also provides an approval workflow for model versions and supports deployment of models in different accounts. You can also use the model registry through the boto3 package </li>
 </ul>
-Two SageMaker endpoints:
+  
+<li>Two SageMaker endpoints: </li>
 
-After a model is approved in the registry, the artifact is automatically deployed to a staging endpoint followed by a manual approval step.
+<ul>
+<li>After a model is approved in the registry, the artifact is automatically deployed to a staging endpoint followed by a manual approval step.</li>
 
-If approved, it’s deployed to a production endpoint in the same AWS account.
-
+<li>If approved, it’s deployed to a production endpoint in the same AWS account. </li>
+</ul>
+  
+</ul>
 All SageMaker resources, such as training jobs, pipelines, models, and endpoints, as well as AWS resources listed in this lab, are automatically tagged with the project name and a unique project ID tag.
 
 <h3>Modifying the Seed Code for Custom Use Case</h3>
