@@ -222,15 +222,80 @@ The ModelDeploy repository contains the AWS CloudFormation buildspec for the dep
 Committing these changes to the CodeCommit repository (easily done on the Studio source control tab) triggers a new pipeline run, because an <a href="https://aws.amazon.com/eventbridge/">Amazon EventBridge</a>  event monitors for commits. After a few moments, we can monitor the run by choosing the pipeline inside the SageMaker project.
 
 <ul>
-<li>To commit the changes, navigate to the Git Section on the left panel and follow the steps in the screenshot below;<li>
+1. To commit the changes, navigate to the Git Section on the left panel and follow the steps in the screenshot below
 <ul>  
   <li>Stage all changes</li>
   <li>Commit the changes by providing a Summary and your Name and an email address</li>
   <li>Push the changes.</li>
   </ul>
-</ul>
+
 
 Make sure you stage the Untracked changes as well.
 
 ![My Image](images/image21.png)
 
+2. Navigate back to the project and select the Pipelines section.
+  
+![My Image](images/image22.png)
+  
+Under execution the following screenshot shows our pipeline details.
+  
+![My Image](images/image23.png)
+  
+3. If you double click on the executing pipelines, the steps of the pipeline will appear. You will be able to monitor the step that is currently running.
+  
+![My Image](images/image24.png)
+  
+![My Image](images/image25.png)
+  
+4. When the pipeline is complete, you can go back to the project screen and choose the Model groups tab. You can then inspect the metadata attached to the model artifacts.
+  
+![My Image](images/image26.png)
+  
+5. If everything looks good, you can click on the Update Status tab and manually approve the model.
+ 
+![My Image](images/image27.png)
+  
+![My Image](images/image28.png)
+  
+![My Image](images/image29.png)
+  
+ You can then go to Endpoints in the SageMaker menu.
+
+![My Image](images/image30.png)
+  
+You will see a staging endpoint being created.
+  
+![My Image](images/image31.png)
+  
+After a while the endpoint will be listed with the InService status.
+  
+![My Image](images/image32.png)
+  
+To deploy the endpoint into production, you need to put your "DevOps Team" hat and go to CodePipeline.
+  
+![My Image](images/image33.png)
+
+Click on the modeldeploy pipeline which is currently in progress.
+  
+![My Image](images/image34.png)
+  
+At the end of the DeployStaging phase, you need to manually approve the deployment.
+  
+![My Image](images/image35.png)
+  
+![My Image](images/image36.png)
+  
+Once it is done you will see the production endpoint being deployed in the SageMaker Endpoints.
+  
+![My Image](images/image37.png)
+  
+After a while the endpoint will also be InService.
+  
+![My Image](images/image38.png)
+  
+  <h3>Conclusion</h3>
+  
+In this lab we have walked through how a data scientist can modify a preconfigured MLOps template for their own modeling use case. Among the many benefits is that the changes to the source code can be tracked, associated metadata can be tied to trained models for deployment approval, and repeated pipeline steps can be cached for reuse. To learn more about SageMaker Pipelines, check out the <a href="https://aws.amazon.com/sagemaker/pipelines/">website</a>  and the <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/pipelines.html">documentation.</a>
+
+  
