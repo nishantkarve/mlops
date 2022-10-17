@@ -103,3 +103,20 @@ Once both repositories have been cloned you should see the following:
 
 ![My Image](images/image11.png)
 
+<h3>ModelBuild Repo:</h3>
+
+The ModelBuild repository contains the code for preprocessing, training, and evaluating the model. The sample code trains and evaluates a model on the UCI Abalone dataset . We can modify these files to solve our own customer churn use case. See the following code:
+
+![My Image](images/image12.png)
+
+We now need a dataset accessible to the project.
+
+1. Open a new SageMaker notebook, choose python3 (Data Science) as the kernel.
+
+![My Image](images/image13.png)
+
+If you are prompted for a kernel, choose Data Science and Python 3.
+
+![My Image](images/image14.png)
+
+2. Inside Studio Notebook, once the kernel is started, run the following code in a cell block to download a data text file and save it as a .csv in your bucket:
