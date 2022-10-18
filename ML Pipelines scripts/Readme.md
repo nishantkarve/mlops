@@ -91,9 +91,9 @@ In the Attach permissions policies section, click the check-box next to Administ
 
 ![My Image](images/image44.png)
 
-<b>Step 12</b>
+<b>Step 13</b>
 
-In the Attach permissions policies section, click the check-box next to AdministratorAccess and click Next: Tags.
+Click on the Next:Review button to proceed to the next step of the wizard.
 
 ![My Image](images/image45.png)
 
