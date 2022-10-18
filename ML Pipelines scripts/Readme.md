@@ -87,7 +87,7 @@ In the Create role wizard, select EC2, and then click the Next: Permissions
 
 <b>Step 12</b>
 
-In the Create role wizard, select EC2, and then click the Next: Permissions.
+In the Attach permissions policies section, click the check-box next to AdministratorAccess and click Next: Tags.
 
 ![My Image](images/image44.png)
 
