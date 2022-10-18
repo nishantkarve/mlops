@@ -12,7 +12,7 @@ Log into the AWS account with your provided user credentials.
 
 Click Services, and under the Developer Tools section, click Cloud9. This will open the Cloud9 dashboard. Click Create environment in the top-right corner.
 
-![My Image](image39.png)
+![My Image](images/image39.png)
 
 <h2> MLOps - Immersion Day </h2>
 
