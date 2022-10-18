@@ -101,7 +101,119 @@ Click on the Next:Review button to proceed to the next step of the wizard.
 
 Enter ML-Practitioner in the Role name text-box and click Create role.
 
+![My Image](images/image46.png)
+
 Once the role has been created, close the IAM Management Console browser tab and go back to the browser tab displaying the Modify IAM role interface.
+
+<b>Step 15</b>
+
+To modify the role, click the "refresh" button, and then from the drop-down, select the newly created ML-Practioner role. Click Save to assign the role to the Cloud9 Instance.
+
+If you see the Failed to attach instance profile message, wait 10 seconds for the IAM Role to fully propagate before trying again
+
+<b>Step 16</b>
+
+Go back to the browser tab for your Cloud9 IDE and click AWS Cloud9 in the top-left corner. Select Preferences.
+
+![My Image](images/image47.png)
+
+This will open the Cloud9 Preferences tab. Scroll down and click the AWS SETTINGS section. Click the radio-button to disable AWS managed temporary credentials:.
+
+![My Image](images/image48.png)
+
+<b>Step 17</b>
+
+Next you will verify that the credentials are correctly configured. Using the terminal, re-run the AWS CLI command used in Step 7 to ensure that you are using the ML-Practitioner role, for exmample:
+
+```
+aws sts get-caller-identity
+```
+
+The command output should look similar to the following:
+
+```
+{
+    "UserId": "ABCDEFGHIJKLMNOP:i-0abcde123456789",
+    "Account": "123456789112",
+    "Arn": "arn:aws:sts::123456789112:assumed-role/ML-Practitioner/i-0cabcde123456789"
+}
+```
+
+<b>Step 18</b>
+
+Install jq and bash-completion.
+
+These packages make it easier to parse command line output, and automatically complete various commands without having to fully type them out.
+
+Set Workshop Variables.
+
+```
+export AWS_DEFAULT_REGION=$(curl -s 169.254.169.254/latest/dynamic/instance-identity/document | jq -r .region)
+aws configure set default.region ${AWS_DEFAULT_REGION}
+export AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query "Account" --output text)
+export VERIFY_ROLE_ARN="arn\:aws\:iam::${AWS_ACCOUNT_ID}\:role/MLOps"
+export DATA_BUCKET="data-${AWS_DEFAULT_REGION}-${AWS_ACCOUNT_ID}"
+export PIPELINE_BUCKET="mlops-${AWS_DEFAULT_REGION}-${AWS_ACCOUNT_ID}"
+echo "export AWS_ACCOUNT_ID=$AWS_ACCOUNT_ID" >> ~/.bashrc
+echo "export VERIFY_ROLE_ARN=$VERIFY_ROLE_ARN" >> ~/.bashrc
+echo "export AWS_DEFAULT_REGION=$AWS_DEFAULT_REGION" >> ~/.bashrc
+echo "export DATA_BUCKET=$DATA_BUCKET" >> ~/.bashrc
+echo "export PIPELINE_BUCKET=$PIPELINE_BUCKET" >> ~/.bashrc
+```
+
+Download necessary Python3 Libraries.
+
+These Python libraries will be used to execute the testing scripts later in the workshop.
+
+```
+curl -O https://bootstrap.pypa.io/get-pip.py &&\
+sudo python3 get-pip.py --user --no-warn-script-location &&\
+rm get-pip.py &&\
+python3 -m pip install -U pip boto3 numpy pandas wget awscli --user
+```
+
+<b>Step 19</b>
+
+New Cloud9 environments are automatically created with a 10GB default EBS volume. Run the following command to increase the size of the default volume to 20GB. This will give us sufficient space to build and test the container locally, when we cover the Unit Testing section later on.
+
+```
+~/environment/workshop-files/utils/c9_resize.sh
+```
+
+Below is a "sample" of the expected output:
+
+```% Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100    19  100    19    0     0  19000      0 --:--:-- --:--:-- --:--:-- 19000
+{
+    "VolumeModification": {
+        "TargetSize": 20, 
+        "TargetVolumeType": "gp2", 
+        "ModificationState": "modifying", 
+        "VolumeId": "vol-02db052b857883db4", 
+        "TargetIops": 100, 
+        "StartTime": "2020-12-30T15:07:09.000Z", 
+        "Progress": 0, 
+        "OriginalVolumeType": "gp2", 
+        "OriginalIops": 100, 
+        "OriginalSize": 10
+    }
+}
+CHANGED: partition=1 start=4096 old: size=20967391 end=20971487 new: size=41938911 end=41943007
+meta-data=/dev/nvme0n1p1         isize=512    agcount=6, agsize=524159 blks
+         =                       sectsz=512   attr=2, projid32bit=1
+         =                       crc=1        finobt=1 spinodes=0
+data     =                       bsize=4096   blocks=2620923, imaxpct=25
+         =                       sunit=0      swidth=0 blks
+naming   =version 2              bsize=4096   ascii-ci=0 ftype=1
+log      =internal               bsize=4096   blocks=2560, version=2
+         =                       sectsz=512   sunit=0 blks, lazy-count=1
+realtime =none                   extsz=4096   blocks=0, rtextents=0
+data blocks changed from 2620923 to 5242363
+
+```
+
+Now that your ML Development environment is ready, you can proceed to the next module.
 
 
 <h2> MLOps - Immersion Day </h2>
