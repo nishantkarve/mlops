@@ -76,9 +76,12 @@ To create the ML-Practitioner Role, click on Create new IAM role.
 
 ![My Image](images/image42.png)
 
-<b>Step 11</b>
 
 This will launch the IAM Management Console in a new browser tab. In the IAM Management Console tab, click the Create role button to start the process of creating the new role.
+
+<b>Step 11 </b>
+
+In the Create role wizard, select EC2, and then click the Next: Permissions
 
 ![My Image](images/image43.png)
 
