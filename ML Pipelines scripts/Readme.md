@@ -1,3 +1,17 @@
+<h2>Getting Started with the Workshop </h2>
+
+You will need to create a Cloud9 instance to simulate the ML Practitioner's development experience. Complete the following steps to begin.
+
+The content for this workshop has been tested in the us-east-1 (N-Virginia) region.
+
+<em>Step 1</em>
+Log into the AWS account with your provided user credentials.
+
+Step 2
+Click Services, and under the Developer Tools section, click Cloud9. This will open the Cloud9 dashboard. Click Create environment in the top-right corner.
+
+
+
 <h2> MLOps - Immersion Day </h2>
 
 
