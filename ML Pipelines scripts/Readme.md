@@ -30,7 +30,45 @@ Leave the Platform, IAM Role, and the other settings at their defaults. Click Ne
 
 Review the environment settings and click Create environment.
 
+It will take a few minutes for your environment to be provisioned and prepared.
 
+Once ready, your IDE will open to a welcome screen.
+
+The central panel of the IDE has two parts, a text/code editor in the upper half, and a terminal window in the lower half. Below the welcome screen in the editor, you should see a terminal prompt and may need to scroll down below the welcome screen to access it. You will be using the terminal window significantly during the workshop.
+
+<b>Step 7</b>
+
+Next you will ensure the environment permissions are configured correctly. Using the terminal, run the following AWS CLI command to see the IAM Role you are currently using:
+
+```
+aws sts get-caller-identity
+```
+
+The command output should look similar to the following:
+
+```
+{
+    "Account": "1234567891112",
+    "UserId": "AROAAAAAAAAAEXAMPLE:MasterKey",
+    "Arn": "arn:aws:sts::1234567891112:assumed-role/TeamRole/MasterKey"
+}
+```
+
+<b>Step 8</b>
+
+Since you will be executing long-running Python API calls to various AWS Services in later parts of the workshop, you will need to ensure that the security token within the request does not expire. To this end, you will create an ML-Practitioner IAM Role and assign it to the Cloud9 environment.
+
+Click the grey circle button in the top-right corner and select Manage EC2 Instance.
+
+![My Image](images/image40.png)
+
+This will launch the EC2 Management Console in a new browser tab.
+
+<b>Step 9</b>
+
+Within the EC2 Console, click the check-box next to the aws-cloud9-WorkshopIDE-... instance. Click Action, Security, and then Modify IAM role.
+
+![My Image](images/image41.png)
 
 <h2> MLOps - Immersion Day </h2>
 
