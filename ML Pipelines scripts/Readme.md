@@ -70,6 +70,58 @@ Within the EC2 Console, click the check-box next to the aws-cloud9-WorkshopIDE-.
 
 ![My Image](images/image41.png)
 
+<b>Step 10</b>
+
+To create the ML-Practitioner Role, click on Create new IAM role.
+
+![My Image](images/image42.png)
+
+This will launch the IAM Management Console in a new browser tab. In the IAM Management Console tab, click the Create role button to start the process of creating the new role.
+
+![My Image](images/image43.png)
+
+<b>Step 11</b>
+
+In the Create role wizard, select EC2, and then click the Next: Permissions.
+
+![My Image](images/image44.png)
+
+<b>Step 12</b>
+
+In the Attach permissions policies section, click the check-box next to AdministratorAccess and click Next: Tags.
+
+![My Image](images/image45.png)
+
+<b>Step 13</b>
+
+Click on the Next:Review button to proceed to the next step of the wizard.
+
+![My Image](images/image46.png)
+
+<b>Step 14</b>
+
+Enter ML-Practitioner in the Role name text-box and click Create role.
+
+![My Image](images/image47.png)
+
+Once the role has been created, close the IAM Management Console browser tab and go back to the browser tab displaying the Modify IAM role interface.
+
+<b>Step 15</b>
+
+To modify the role, click the "refresh" button, and then from the drop-down, select the newly created ML-Practioner role. Click Save to assign the role to the Cloud9 Instance.
+
+If you see the Failed to attach instance profile message, wait 10 seconds for the IAM Role to fully propagate before trying again.
+
+<b>Step 16</b>
+
+Go back to the browser tab for your Cloud9 IDE and click AWS Cloud9 in the top-left corner. Select Preferences.
+
+![My Image](images/image48.png)
+
+This will open the Cloud9 Preferences tab. Scroll down and click the AWS SETTINGS section. Click the radio-button to disable AWS managed temporary credentials:.
+
+![My Image](images/image49.png)
+
 <h2> MLOps - Immersion Day </h2>
 
 
