@@ -14,6 +14,24 @@ Click Services, and under the Developer Tools section, click Cloud9. This will o
 
 ![My Image](images/image39.png)
 
+<b>Step 3</b>
+
+For the Name, enter WorkshopIDE and optionally provide a Description. Click Next step.
+
+<b>Step 4</b>
+
+You may leave the Environment settings at their defaults, but launch a new t3.large EC2 instance by clicking Other instance type check-box, and selecting t3.large from the drop-down list.
+
+<b>Step 5</b>
+
+Leave the Platform, IAM Role, and the other settings at their defaults. Click Next Step.
+
+<b>Step 6</b>
+
+Review the environment settings and click Create environment.
+
+
+
 <h2> MLOps - Immersion Day </h2>
 
 
