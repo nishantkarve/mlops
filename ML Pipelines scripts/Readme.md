@@ -97,7 +97,7 @@ Click on the Next:Review button to proceed to the next step of the wizard.
 
 ![My Image](images/image45.png)
 
-<b>Step 13</b>
+<b>Step 14</b>
 
 Enter ML-Practitioner in the Role name text-box and click Create role.
 
