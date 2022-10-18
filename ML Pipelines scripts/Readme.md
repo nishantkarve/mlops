@@ -4,10 +4,12 @@ You will need to create a Cloud9 instance to simulate the ML Practitioner's deve
 
 The content for this workshop has been tested in the us-east-1 (N-Virginia) region.
 
-<em>Step 1</em>
+<b>Step 1</b>
+
 Log into the AWS account with your provided user credentials.
 
-Step 2
+<b>Step 2</b>
+
 Click Services, and under the Developer Tools section, click Cloud9. This will open the Cloud9 dashboard. Click Create environment in the top-right corner.
 
 
