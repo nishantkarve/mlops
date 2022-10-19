@@ -79,4 +79,9 @@ Copy and paste the following code into the Edit trust policy editor in the locat
   
   <h3>Step 2: Set up a SageMaker Studio notebook and parameterize the pipeline</h3>
   
+  In this step, you launch a new SageMaker Studio notebook and configure the SageMaker variables required to interact with Amazon Simple Storage Service (Amazon S3).
+  
+  Enter SageMaker Studio into the AWS console search bar, and then choose SageMaker Studio. Choose US East (N. Virginia) from the Region dropdown list on the upper right corner of the console.
+  
+  ![My Image](images/image58.png)
   
