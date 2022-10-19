@@ -77,3 +77,6 @@ Copy and paste the following code into the Edit trust policy editor in the locat
 <h4>Congratulations! You have finished the Add permissions to your Amazon SageMaker Studio account.</h4>
   
   
+  <h3>Step 2: Set up a SageMaker Studio notebook and parameterize the pipeline</h3>
+  
+  
