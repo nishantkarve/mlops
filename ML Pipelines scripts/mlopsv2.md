@@ -37,6 +37,41 @@ Enter IAM in the search bar in the SageMaker console, and then choose IAM to ope
  
 ![My Image](images/image52.png)
   
-
-
+In the IAM console, on the Identity and Access Management (IAM) pane, under Access management, choose Roles. Under the Roles pane, in the search bar, paste the Execution role text that you copied in Step 1. Under Role name search results, choose the role displayed. 
+  
+![My Image](images/image53.png)
+  
+In the Summary page, under the Permissions tab, Permissions polices, Add permissions, choose Attach policies.
+  
+![My Image](images/image54.png)
+  
+In the Attach policy page, under Other permissions policies, enter AmazonSageMakerFullAccess, and press Enter. This policy is required to allow your SageMaker Studio account to access SageMaker APIs and features. Under Policy name, select AmazonSageMakerFullAccess, and then choose Attach policies. On the role Summary page, the newly added policy is displayed under the Permissions policies list.
+  
+Repeat Step 2 to add the AWSCloudFormationFullAccess and AmazonSageMakerPipelinesIntegrations policies.
+  
+![My Image](images/image55.png)
+  
+<h3>Step 3: Allow access to AWS Lambda</h3>
+  
+In this step, you edit the trust policy to allow access to AWS Lambda.
+  
+In the AWS IAM console, on the role Summary page, select the Trust relationships tab, and then choose Edit trust policy.
+  
+![My Image](images/image56.png)
+  
+Copy and paste the following code into the Edit trust policy editor in the location shown in the screenshot. Make sure that the indentation of the JSON code is exactly as shown in the screenshot. Do not delete the code already in the editor, instead add the following code by inserting it at the location shown in the screenshot. Choose Update policy.
+  
+```
+  {
+                        "Effect": "Allow",
+                        "Principal": {
+                            "Service": "lambda.amazonaws.com"
+                        },
+                        "Action": "sts:AssumeRole"
+ }
+```
+  
+![My Image](images/image57.png)
+  
+  
 
