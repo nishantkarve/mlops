@@ -164,3 +164,180 @@ from sagemaker.drift_check_baselines import DriftCheckBaselines
 
 from sagemaker.image_uris import retrieve
   ```
+
+  Copy and paste the following code block in a cell and run to set up SageMaker and S3 client objects using the SageMaker and AWS SDKs. These objects are needed to enable SageMaker to perform various actions such as deploying and invoking endpoints, and to interact with Amazon S3 and AWS Lambda. The code also sets up the S3 bucket locations where the raw and processed datasets and model artifacts are stored. Notice that the read and write buckets are separate. The read bucket is the public S3 bucket named sagemaker-sample-files and it contains the raw datasets. The write bucket is the default S3 bucket associated with your account named sagemaker-<your- Region>-<your-account-id> and it will be used later in this tutorial to store the processed datasets and artifacts.
+  
+  ```
+  # Instantiate AWS services session and client objects
+sess = sagemaker.Session()
+write_bucket = sess.default_bucket()
+write_prefix = "fraud-detect-demo"
+
+region = sess.boto_region_name
+s3_client = boto3.client("s3", region_name=region)
+sm_client = boto3.client("sagemaker", region_name=region)
+sm_runtime_client = boto3.client("sagemaker-runtime")
+
+# Fetch SageMaker execution role
+sagemaker_role = sagemaker.get_execution_role()
+
+
+# S3 locations used for parameterizing the notebook run
+read_bucket = "sagemaker-sample-files"
+read_prefix = "datasets/tabular/synthetic_automobile_claims" 
+
+# S3 location where raw data to be fetched from
+raw_data_key = f"s3://{read_bucket}/{read_prefix}"
+
+# S3 location where processed data to be uploaded
+processed_data_key = f"{write_prefix}/processed"
+
+# S3 location where train data to be uploaded
+train_data_key = f"{write_prefix}/train"
+
+# S3 location where validation data to be uploaded
+validation_data_key = f"{write_prefix}/validation"
+
+# S3 location where test data to be uploaded
+test_data_key = f"{write_prefix}/test"
+
+
+# Full S3 paths
+claims_data_uri = f"{raw_data_key}/claims.csv"
+customers_data_uri = f"{raw_data_key}/customers.csv"
+output_data_uri = f"s3://{write_bucket}/{write_prefix}/"
+scripts_uri = f"s3://{write_bucket}/{write_prefix}/scripts"
+estimator_output_uri = f"s3://{write_bucket}/{write_prefix}/training_jobs"
+processing_output_uri = f"s3://{write_bucket}/{write_prefix}/processing_jobs"
+model_eval_output_uri = f"s3://{write_bucket}/{write_prefix}/model_eval"
+clarify_bias_config_output_uri = f"s3://{write_bucket}/{write_prefix}/model_monitor/bias_config"
+clarify_explainability_config_output_uri = f"s3://{write_bucket}/{write_prefix}/model_monitor/explainability_config"
+bias_report_output_uri = f"s3://{write_bucket}/{write_prefix}/clarify_output/pipeline/bias"
+explainability_report_output_uri = f"s3://{write_bucket}/{write_prefix}/clarify_output/pipeline/explainability"
+
+# Retrieve training image
+training_image = retrieve(framework="xgboost", region=region, version="1.3-1")
+  ```
+  
+  
+ Copy and paste the following code to set the names for the various SageMaker pipeline components, such as the model and the endpoint, and specify training and inference instance types and counts. These values will be used to parametrize your pipeline.
+
+  
+  ```
+  # Set names of pipeline objects
+pipeline_name = "FraudDetectXGBPipeline"
+pipeline_model_name = "fraud-detect-xgb-pipeline"
+model_package_group_name = "fraud-detect-xgb-model-group"
+base_job_name_prefix = "fraud-detect"
+endpoint_config_name = f"{pipeline_model_name}-endpoint-config"
+endpoint_name = f"{pipeline_model_name}-endpoint"
+
+# Set data parameters
+target_col = "fraud"
+
+# Set instance types and counts
+process_instance_type = "ml.c5.xlarge"
+train_instance_count = 1
+train_instance_type = "ml.m4.xlarge"
+predictor_instance_count = 1
+predictor_instance_type = "ml.m4.xlarge"
+clarify_instance_count = 1
+clarify_instance_type = "ml.m4.xlarge"
+  ```
+  
+  SageMaker Pipelines supports parameterization, which allows you to specify input parameters at runtime without changing your pipeline code. You can use the modules available under the sagemaker.workflow.parameters module, such as ParameterInteger, ParameterFloat, ParameterString, and ParameterBoolean, to specify pipeline parameters of various data types. Copy, paste, and run the following code to set up multiple input parameters, including SageMaker Clarify configurations.
+  
+  ```
+  # Set up pipeline input parameters
+
+# Set processing instance type
+process_instance_type_param = ParameterString(
+    name="ProcessingInstanceType",
+    default_value=process_instance_type,
+)
+
+# Set training instance type
+train_instance_type_param = ParameterString(
+    name="TrainingInstanceType",
+    default_value=train_instance_type,
+)
+
+# Set training instance count
+train_instance_count_param = ParameterInteger(
+    name="TrainingInstanceCount",
+    default_value=train_instance_count
+)
+
+# Set deployment instance type
+deploy_instance_type_param = ParameterString(
+    name="DeployInstanceType",
+    default_value=predictor_instance_type,
+)
+
+# Set deployment instance count
+deploy_instance_count_param = ParameterInteger(
+    name="DeployInstanceCount",
+    default_value=predictor_instance_count
+)
+
+# Set Clarify check instance type
+clarify_instance_type_param = ParameterString(
+    name="ClarifyInstanceType",
+    default_value=clarify_instance_type,
+)
+
+# Set model bias check params
+skip_check_model_bias_param = ParameterBoolean(
+    name="SkipModelBiasCheck", 
+    default_value=False
+)
+
+register_new_baseline_model_bias_param = ParameterBoolean(
+    name="RegisterNewModelBiasBaseline",
+    default_value=False
+)
+
+supplied_baseline_constraints_model_bias_param = ParameterString(
+    name="ModelBiasSuppliedBaselineConstraints", 
+    default_value=""
+)
+
+# Set model explainability check params
+skip_check_model_explainability_param = ParameterBoolean(
+    name="SkipModelExplainabilityCheck", 
+    default_value=False
+)
+
+register_new_baseline_model_explainability_param = ParameterBoolean(
+    name="RegisterNewModelExplainabilityBaseline",
+    default_value=False
+)
+
+supplied_baseline_constraints_model_explainability_param = ParameterString(
+    name="ModelExplainabilitySuppliedBaselineConstraints", 
+    default_value=""
+)
+
+# Set model approval param
+model_approval_status_param = ParameterString(
+    name="ModelApprovalStatus", default_value="Approved"
+)
+  ```
+  
+  <h3>Step 3: Build the pipeline components </h3>
+  
+  A pipeline is a sequence of steps that can be individually built and then put together to form an ML workflow. The following diagram shows the high-level steps of a pipeline.
+  
+  ![My Image](images/image63.png)
+  
+  In this tutorial, you build a pipeline with the following steps:
+  
+1. Data processing step: Runs a SageMaker Processing job using the input raw data in S3 and outputs training, validation, and test splits to S3.
+2. Training step: Trains an XGBoost model using SageMaker training jobs with training and validation data in S3 as inputs, and stores the trained model artifact in S3.
+3. Evaluation step: Evaluates the model on the test dataset by running a SageMaker Processing job using the test data and the model artifact in S3 as inputs, and stores the output model performance evaluation report in S3.
+4. Conditional step: Compares model performance on the test dataset against the threshold. Runs a SageMaker Pipelines predefined step using the model performance evaluation report in S3 as input, and stores the output list of pipeline steps that will be executed if model performance is acceptable.
+5. Create model step: Runs a SageMaker Pipelines predefined step using the model artifact in S3 as an input, and stores the output SageMaker model in S3.
+6. Bias check step: Checks for model bias using SageMaker Clarify with the training data and model artifact in S3 as inputs and stores the model bias report and baseline metrics in S3.
+7. Model explainability step: Runs SageMaker Clarify with the training data and model artifact in S3 as inputs, and stores the model explainability report and baseline metrics in S3.
+8. Register step: Runs a SageMaker Pipelines predefined step using the model, bias, and explainability baseline metrics as inputs to register the model in the SageMaker Model Registry.
+9. Deploy step: Runs a SageMaker Pipelines predefined step using an AWS Lambda handler function, the model, and the endpoint configuration as inputs to deploy the model to a SageMaker Real-Time Inference endpoint.
