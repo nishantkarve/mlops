@@ -17,9 +17,9 @@ In this guide, you will:
 In this tuorial, it is assumed that you have a Sagemaker studio domain setup. We will walk through the process of modifying the IAM role attached to the domain. 
 An AWS account can have only one SageMaker Studio domain per Region
 
-<h2> Modifying your Sagemaker studio IAM role</h2>
+<h2>Step 1 Modifying your Sagemaker studio IAM role</h2>
 
-<h3>Step 1: Copy your SageMaker Studio user role id</h3>
+<h3>Step A: Copy your SageMaker Studio user role id</h3>
 
 In the SageMaker Studio Control Panel page, under the Users section, select your SageMaker Studio user name.
 
@@ -29,7 +29,7 @@ In the User Details page, under the Details pane, Execution role, highlight and 
 
 ![My Image](images/image51.png)
   
-<h3>Step 2: Attach AWS IAM policies</h3>
+<h3>Step B: Attach AWS IAM policies</h3>
   
 In this step, you attach three AWS IAM policies to your SageMaker Studio account to allow the account access to SageMaker APIs and features for automating ML workflows.
   
@@ -37,7 +37,7 @@ Enter IAM in the search bar in the SageMaker console, and then choose IAM to ope
  
 ![My Image](images/image52.png)
   
-In the IAM console, on the Identity and Access Management (IAM) pane, under Access management, choose Roles. Under the Roles pane, in the search bar, paste the Execution role text that you copied in Step 1. Under Role name search results, choose the role displayed. 
+In the IAM console, on the Identity and Access Management (IAM) pane, under Access management, choose Roles. Under the Roles pane, in the search bar, paste the Execution role text that you copied in Step A. Under Role name search results, choose the role displayed. 
   
 ![My Image](images/image53.png)
   
@@ -47,11 +47,11 @@ In the Summary page, under the Permissions tab, Permissions polices, Add permiss
   
 In the Attach policy page, under Other permissions policies, enter AmazonSageMakerFullAccess, and press Enter. This policy is required to allow your SageMaker Studio account to access SageMaker APIs and features. Under Policy name, select AmazonSageMakerFullAccess, and then choose Attach policies. On the role Summary page, the newly added policy is displayed under the Permissions policies list.
   
-Repeat Step 2 to add the AWSCloudFormationFullAccess and AmazonSageMakerPipelinesIntegrations policies.
+Repeat Step B to add the AWSCloudFormationFullAccess and AmazonSageMakerPipelinesIntegrations policies.
   
 ![My Image](images/image55.png)
   
-<h3>Step 3: Allow access to AWS Lambda</h3>
+<h3>Step C: Allow access to AWS Lambda</h3>
   
 In this step, you edit the trust policy to allow access to AWS Lambda.
   
