@@ -23,5 +23,20 @@ An AWS account can have only one SageMaker Studio domain per Region
 
 In the SageMaker Studio Control Panel page, under the Users section, select your SageMaker Studio user name.
 
+![My Image](images/image50.png)
+
+In the User Details page, under the Details pane, Execution role, highlight and copy only the text after arn:aws:iam::<your-account-id>:role/.
+
+![My Image](images/image51.png)
+  
+<h3>Step 2: Attach AWS IAM policies</h3>
+  
+In this step, you attach three AWS IAM policies to your SageMaker Studio account to allow the account access to SageMaker APIs and features for automating ML workflows.
+  
+Enter IAM in the search bar in the SageMaker console, and then choose IAM to open the AWS IAM console.
+ 
+![My Image](images/image52.png)
+  
+
 
 
