@@ -74,4 +74,6 @@ Copy and paste the following code into the Edit trust policy editor in the locat
 ![My Image](images/image57.png)
   
   
-
+<h4>Congratulations! You have finished the Add permissions to your Amazon SageMaker Studio account.</h4>
+  
+  
