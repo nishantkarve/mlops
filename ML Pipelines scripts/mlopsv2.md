@@ -328,7 +328,7 @@ model_approval_status_param = ParameterString(
   
   A pipeline is a sequence of steps that can be individually built and then put together to form an ML workflow. The following diagram shows the high-level steps of a pipeline.
   
-  ![My Image](images/image63.png)
+  <table bgcolor="#FF0000"><tr><td> ![My Image](images/image63.png)</td></tr></table>
   
   In this tutorial, you build a pipeline with the following steps:
   
