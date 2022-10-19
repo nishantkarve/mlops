@@ -412,7 +412,7 @@ cond_lte = ConditionGreaterThanOrEqualTo(
 
 ![My Image](images/image20.png)
 
-8. Replace the evaluate.py code with the customer churn evaluation script found in the sample repository . One piece of the code we’d like to point out is that, because we’re evaluating a classification model, we need to update the metrics we’re evaluating and associating with trained models:
+8. Replace the <a href="evaluate.py">evaluate.py</a> code with the customer churn evaluation script found in the sample repository . One piece of the code we’d like to point out is that, because we’re evaluating a classification model, we need to update the metrics we’re evaluating and associating with trained models:
 
 ```
 report_dict = {
