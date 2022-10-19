@@ -101,4 +101,66 @@ Copy and paste the following code into the Edit trust policy editor in the locat
   
   ![My Image](images/image62.png)
   
+  To import the required libraries, copy and paste the following code in a cell in your notebook and run the cell.
   
+  ```
+  import pandas as pd
+import json
+import boto3
+import pathlib
+import io
+import sagemaker
+
+
+from sagemaker.deserializers import CSVDeserializer
+from sagemaker.serializers import CSVSerializer
+
+from sagemaker.xgboost.estimator import XGBoost
+from sagemaker.sklearn.processing import SKLearnProcessor
+from sagemaker.processing import (
+    ProcessingInput, 
+    ProcessingOutput, 
+    ScriptProcessor
+)
+from sagemaker.inputs import TrainingInput
+
+from sagemaker.workflow.pipeline import Pipeline
+from sagemaker.workflow.steps import (
+    ProcessingStep, 
+    TrainingStep, 
+    CreateModelStep
+)
+from sagemaker.workflow.check_job_config import CheckJobConfig
+from sagemaker.workflow.parameters import (
+    ParameterInteger, 
+    ParameterFloat, 
+    ParameterString, 
+    ParameterBoolean
+)
+from sagemaker.workflow.clarify_check_step import (
+    ModelBiasCheckConfig, 
+    ClarifyCheckStep, 
+    ModelExplainabilityCheckConfig
+)
+from sagemaker.workflow.step_collections import RegisterModel
+from sagemaker.workflow.conditions import ConditionGreaterThanOrEqualTo
+from sagemaker.workflow.properties import PropertyFile
+from sagemaker.workflow.condition_step import ConditionStep
+from sagemaker.workflow.functions import JsonGet
+
+from sagemaker.workflow.lambda_step import (
+    LambdaStep,
+    LambdaOutput,
+    LambdaOutputTypeEnum,
+)
+from sagemaker.lambda_helper import Lambda
+
+from sagemaker.model_metrics import (
+    MetricsSource, 
+    ModelMetrics, 
+    FileSource
+)
+from sagemaker.drift_check_baselines import DriftCheckBaselines
+
+from sagemaker.image_uris import retrieve
+  ```
