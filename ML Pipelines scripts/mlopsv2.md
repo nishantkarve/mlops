@@ -85,3 +85,20 @@ Copy and paste the following code into the Edit trust policy editor in the locat
   
   ![My Image](images/image58.png)
   
+  For Launch app, select Studio to open SageMaker Studio using the studio-user profile.
+  
+  ![My Image](images/image59.png)
+  
+  On the SageMaker Studio navigation bar, choose File, New, Notebook. 
+  
+  ![My Image](images/image60.png)
+  
+  In the Set up notebook environment dialog box, under Image, select Data Science. The Python 3 kernel is selected automatically. Choose Select. 
+  
+  ![My Image](images/image61.png)
+  
+  The kernel on the top right corner of the notebook should now display Python 3 (Data Science).
+  
+  ![My Image](images/image62.png)
+  
+  
