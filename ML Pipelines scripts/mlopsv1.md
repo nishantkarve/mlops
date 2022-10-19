@@ -390,7 +390,7 @@ Save the file.
 
 ![My Image](images/image18.png)
 
-7. Replace the <b>pipeline.py</b> code under the customer_churn folder with the customer churn <a href="preprocess.py">pipeline script found in the sample repository </a> . Be sure to replace the “InputDataUrl” (line 121 of pipeline.py) default parameter with the Amazon S3 URL obtained in Step 2:
+7. Replace the <b>pipeline.py</b> code under the customer_churn folder with the customer churn <a href="pipeline.py">pipeline script found in the sample repository </a> . Be sure to replace the “InputDataUrl” (line 121 of pipeline.py) default parameter with the Amazon S3 URL obtained in Step 2:
 
 ```
 input_data = ParameterString(
